@@ -1,4 +1,4 @@
-# queue-tea
+![](docs/logo.png)
 
 Cute & simple, robust, persistable job & task queue written in typescript. Full type safety included.
 
