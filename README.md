@@ -7,7 +7,7 @@ import Queue from 'queue-tea'
 
 interface Tasks {
   syncDataWithCloud: { username: string; count: number }
-  doSomethingInBackground: undefined
+  runInBackground: undefined
 }
 
 const queue = Queue<Tasks>({
