@@ -21,5 +21,14 @@
     "semi": false,
     "arrowParens": "always",
     "singleQuote": true
-  }
+  },
+  "keywords": [
+    "queue",
+    "task",
+    "taskqueue",
+    "job",
+    "jobqueue",
+    "typescript",
+    "local"
+  ]
 }
