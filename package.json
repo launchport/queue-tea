@@ -1,6 +1,6 @@
 {
   "name": "queue-tea",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple, robust, persistable job & task queue written in typescript. Full type safety included.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
