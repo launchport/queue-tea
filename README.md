@@ -33,7 +33,7 @@ queue.run();
 
 ## Introduction
 
-**Queue Tee** is meant to be a local queue for Javascript applications running for React Native, Electron or the Browser.
+**Queue Tea** is meant to be a local queue for Javascript applications running for React Native, Electron or the Browser.
 
 We use it to ensure some tasks that should be performed in the background, can fail and can be retried. It's also **persistable by serializing** it and providing the state as `initialState`.
 
