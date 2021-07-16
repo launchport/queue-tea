@@ -1,9 +1,9 @@
-# queue tee
+# queue-tea
 
 Cute & simple, robust, persistable job & task queue written in typescript. Full type safety included.
 
 ```ts
-import Queue from 'queue-tee'
+import Queue from 'queue-tea'
 
 interface Tasks {
   syncDataWithCloud: { username: string; count: number; }
