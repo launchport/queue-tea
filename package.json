@@ -5,6 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "nanoevents": "^6.0.0"
   },
