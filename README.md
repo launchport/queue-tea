@@ -7,7 +7,7 @@ import Queue from 'queue-tea'
 
 interface Tasks {
   syncDataWithCloud: { username: string; count: number; }
-  syncDataWithCloud: { username: string; count: number; }
+  doSomethingInBackground: { }
 }
 
 const queue = Queue<Tasks>({
@@ -17,7 +17,7 @@ const queue = Queue<Tasks>({
         body: JSON.stringify({ username, count })
       })
     },
-    doSomethingInBackground: async (my, { createdAt, retries }) => {
+    doSomethingInBackground: async ({}, { createdAt, retries }) => {
       // This is a fun task, that fails 3 times, than succeeds
       if (retries < 2) {
         throw new Error('Not this time')
