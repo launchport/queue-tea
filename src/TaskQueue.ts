@@ -92,7 +92,7 @@ export const TaskQueue = <
 
   const queueTask = <K extends keyof G>(
     name: K,
-    ...options: G[K] extends object ? [G[K]] : [undefined?]
+    ...options: G[K] extends undefined ? never : [G[K]]
   ) => {
     const id = uuidv4()
     queuedTasks.enqueue({
