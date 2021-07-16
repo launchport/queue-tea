@@ -43,7 +43,7 @@ We use it to ensure some tasks that should be performed in the background, can f
 
 | Option       | Value                                                |
 | ------------ | ---------------------------------------------------- |
-| initialState | `{ }`                                                |
+| initialState | `{}`                                                |
 | onChange     | `onChange?: (queue: QueueType<G>) => Promise<void>;` |
 | retryDelay   | `(retries: number) => number`                        |
 
