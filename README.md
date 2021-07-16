@@ -6,18 +6,18 @@ Cute & simple, robust, persistable **job & task queue** written in typescript. _
 import Queue from 'queue-tea'
 
 interface Tasks {
-  syncDataWithCloud: { username: string; count: number; }
-  doSomethingInBackground: { }
+  syncDataWithCloud: { username: string; count: number }
+  doSomethingInBackground: undefined
 }
 
 const queue = Queue<Tasks>({
   tasks: {
     syncDataWithCloud: async ({ username, count }) => {
       fetch('http://example.com/api/', {
-        body: JSON.stringify({ username, count })
+        body: JSON.stringify({ username, count }),
       })
     },
-    doSomethingInBackground: async ({}, { createdAt, retries }) => {
+    runInBackground: async (_options, { createdAt, retries }) => {
       // This is a fun task, that fails 3 times, than succeeds
       if (retries < 2) {
         throw new Error('Not this time')
@@ -25,10 +25,26 @@ const queue = Queue<Tasks>({
 
       return
     },
-  }
-}
+  },
+})
 
-queue.run();
+queue.queueTask('syncDataWithCloud', { username: 'rainbow cat', count: 69 })
+queue.queueTask('runInBackground')
+
+queue.run()
+
+```
+
+## Installation
+
+You know the drill 👏
+
+```sh
+yarn add queue-tea
+
+### or for the npm fans
+
+npm install --save queue-tea
 ```
 
 ## Introduction
@@ -43,7 +59,7 @@ We use it to ensure some tasks that should be performed in the background, can f
 
 | Option       | Value                                                |
 | ------------ | ---------------------------------------------------- |
-| initialState | `{}`                                                |
+| initialState | `{}`                                                 |
 | onChange     | `onChange?: (queue: QueueType<G>) => Promise<void>;` |
 | retryDelay   | `(retries: number) => number`                        |
 
