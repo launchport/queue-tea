@@ -1,6 +1,6 @@
 ![](docs/logo.png)
 
-Cute & simple, robust, persistable job & task queue written in typescript. Full type safety included.
+Cute & simple, robust, persistable **job & task queue** written in typescript. _Full type safety included._ ✌🏼
 
 ```ts
 import Queue from 'queue-tea'
