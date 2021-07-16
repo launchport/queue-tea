@@ -2,10 +2,15 @@
   "name": "queue-tea",
   "version": "1.0.0",
   "description": "A simple, robust, persistable job & task queue written in typescript. Full type safety included.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "license": "MIT",
   "dependencies": {
     "nanoevents": "^6.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "tsup"
   },
   "devDependencies": {
     "@babel/preset-env": "7.14.7",
@@ -14,8 +19,30 @@
     "jest": "26.6.3",
     "prettier": "2.3.2",
     "ts-jest": "26.5.6",
+    "tsup": "4.12.5",
     "typescript": "4.3.5",
     "wait-for-expect": "^3.0.2"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "preset": "ts-jest/presets/js-with-babel",
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/?!(nanoevents)/"
+    ]
+  },
+  "tsup": {
+    "splitting": false,
+    "clean": true,
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "entryPoints": [
+      "src/index.ts"
+    ]
   },
   "prettier": {
     "semi": false,
