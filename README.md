@@ -3,14 +3,14 @@
 Cute & simple, robust, persistable **job & task queue** written in typescript. _Full type safety included._ ✌🏼
 
 ```ts
-import Queue from 'queue-tea'
+import createQueue from 'queue-tea'
 
 interface Tasks {
   syncDataWithCloud: { username: string; count: number }
   runInBackground: undefined
 }
 
-const queue = Queue<Tasks>({
+const queue = createQueue<Tasks>({
   tasks: {
     syncDataWithCloud: async ({ username, count }) => {
       fetch('http://example.com/api/', {
