@@ -4,6 +4,8 @@
   "description": "A simple, robust, persistable job & task queue written in typescript. Full type safety included.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
   "license": "MIT",
   "files": [
     "dist"
@@ -26,14 +28,16 @@
     "typescript": "4.3.5",
     "wait-for-expect": "^3.0.2"
   },
-  "jest": {
-    "roots": [
-      "<rootDir>/src"
-    ],
-    "preset": "ts-jest/presets/js-with-babel",
-    "testEnvironment": "node",
-    "transformIgnorePatterns": [
-      "node_modules/?!(nanoevents)/"
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ]
   },
   "tsup": {
@@ -51,6 +55,16 @@
     "semi": false,
     "arrowParens": "always",
     "singleQuote": true
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "preset": "ts-jest/presets/js-with-babel",
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/?!(nanoevents)/"
+    ]
   },
   "keywords": [
     "queue",
