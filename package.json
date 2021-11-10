@@ -15,7 +15,8 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "tsup"
+    "build": "tsup",
+    "prepublishOnly": "yarn test && yarn build"
   },
   "devDependencies": {
     "@babel/preset-env": "7.14.7",
