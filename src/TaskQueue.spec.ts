@@ -68,6 +68,50 @@ describe('TaskQueue', () => {
     jest.useRealTimers()
   })
 
+  it('should have correct state', async () => {
+    const mocka = jest.fn()
+
+    const queue = TaskQueue<{ run: undefined }>({
+      tasks: { run: mocka },
+    })
+
+    expect(queue.getState()).toBe('paused')
+    queue.run()
+    // No tasks enqueued
+    expect(queue.getState()).toBe('idle')
+
+    queue.queueTask('run')
+    expect(queue.getState()).toBe('running')
+
+    await waitForExpect(() => {
+      expect(queue.getState()).toBe('idle')
+    })
+
+    queue.pause()
+    queue.queueTask('run')
+    expect(queue.getState()).toBe('paused')
+    expect(queue.getQueueItems().length).toBe(1)
+  })
+
+  it('should not run when queue is paused', async () => {
+    const queue = TaskQueue<{ run: undefined }>({
+      tasks: {
+        run: jest.fn(),
+      },
+    })
+    queue.queueTask('run')
+    queue.run()
+
+    await waitForExpect(() => {
+      expect(queue.getQueueItems().length).toBe(0)
+    })
+
+    queue.pause()
+    queue.queueTask('run')
+    expect(queue.getState()).toBe('paused')
+    expect(queue.getQueueItems().length).toBe(1)
+  })
+
   // @todo
   // it('should execute one task at a time', async () => {
   //   const mocka = jest.fn()
