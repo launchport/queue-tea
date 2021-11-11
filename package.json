@@ -3,6 +3,7 @@
   "version": "1.0.4",
   "description": "A simple, robust, persistable job & task queue written in typescript. Full type safety included.",
   "main": "dist/index.js",
+  "repository": "signalzwei/queue-tea",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "sideEffects": false,
@@ -19,9 +20,8 @@
     "prepublishOnly": "yarn test && yarn build"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.14.7",
+    "@sucrase/jest-plugin": "2.2.0",
     "@types/jest": "26.0.24",
-    "babel-jest": "27.0.6",
     "jest": "26.6.3",
     "prettier": "2.3.2",
     "ts-jest": "26.5.6",
@@ -49,10 +49,12 @@
     "roots": [
       "<rootDir>/src"
     ],
-    "preset": "ts-jest/presets/js-with-babel",
     "testEnvironment": "node",
+    "transform": {
+      "\\.[jt]s?$": "@sucrase/jest-plugin"
+    },
     "transformIgnorePatterns": [
-      "node_modules/?!(nanoevents)/"
+      "node_modules/(?!nanoevents)"
     ]
   },
   "keywords": [
